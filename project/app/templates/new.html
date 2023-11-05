@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini-gallery or erhana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+            <div class="col-12 mb-3">
+                    <button class="btn btn-primary" type="submit">Добавить</button>
+            </div>
+            </form>
+        </div>
+        <div class="row" id="gallery">
+            <div class="col-3 mb-3">
+                {% for file in files %}
+                    <a href="{{ file.file.url }}" download="" class="btn btn-success mt-2">{{ file.file }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
